@@ -69,7 +69,6 @@ st.markdown("---")
 if not data_loaded:
     st.error("⚠️ لم نتمكن من تشغيل الموديل. يرجى التأكد من رفع ملف البيانات `league_of_legends_data_large.csv` في المستودع.")
 else:
-    # تقسيم الصفحة لتبويبين (Tab للتوقع و Tab للرسومات والتحليلات)
     tab1, tab2 = st.tabs(["🔮 Match Prediction", "📊 Model Analytics & Charts"])
     
     with tab1:
@@ -92,13 +91,15 @@ else:
                 prediction = opt_model(input_tensor)
                 probability = prediction.item()
                 
+            # التعديل هنا: رسايل واضحة ومباشرة بدون أسماء فرق
             if probability >= 0.5:
-                st.success(f"🎉 **الفريق الأزرق (Blue Team) هو الأقرب للفوز!** بنسبة احتمال: {probability*100:.2f}%")
+                st.success(f"🎉 **التوقع: فوز بالمباراة (Win)!** بنسبة احتمال: {probability*100:.2f}%")
             else:
-                st.error(f"💀 **الفريق الأزرق (Blue Team) معرض للـ Loss.** بنسبة احتمال فوز: {probability*100:.2f}%")
+                st.error(f"💀 **التوقع: خسارة المباراة (Loss).** بنسبة احتمال فوز: {probability*100:.2f}%")
 
     with tab2:
         st.subheader("📈 التحليلات والرسومات البيانية للموديل")
+        st.write("الأشكال التوضيحية الخاصة بأداء النموذج وأوزان المتغيرات:")
         
         # 1. رسم الـ Confusion Matrix
         st.write("#### 🔹 Confusion Matrix")
@@ -116,6 +117,7 @@ else:
         
         st.markdown("---")
         
+        # 2. رسم أهمية المتغيرات (Feature Importance)
         st.write("#### 🔹 Feature Importance (Weights)")
         weights = opt_model.linear.weight.data.numpy().flatten()
         
