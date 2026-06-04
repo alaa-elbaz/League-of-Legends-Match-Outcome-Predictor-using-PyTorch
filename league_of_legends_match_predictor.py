@@ -132,8 +132,6 @@ for epoch in range(epochs):
 
 print(" تم تدريب النموذج المحسن بنجاح وتخفيض الـ Overfitting!")
 
-!pip install seaborn
-
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.metrics import confusion_matrix, roc_curve, auc, classification_report
