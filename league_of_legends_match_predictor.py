@@ -99,7 +99,6 @@ else:
 
     with tab2:
         st.subheader("📈 التحليلات والرسومات البيانية للموديل")
-        st.write("هنا مصفوفة الارتباك وأهمية المتغيرات التي كانت مخفية في الكود:")
         
         # 1. رسم الـ Confusion Matrix
         st.write("#### 🔹 Confusion Matrix")
@@ -117,7 +116,6 @@ else:
         
         st.markdown("---")
         
-        # 2. رسم أهمية المتغيرات (Feature Importance)
         st.write("#### 🔹 Feature Importance (Weights)")
         weights = opt_model.linear.weight.data.numpy().flatten()
         
